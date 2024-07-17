@@ -11,22 +11,25 @@
 
 using namespace std;
 
-struct myStruct {
-    bool flag;
-    int age;
-    double money;
-    myStruct(bool a, int b, double c) {
-        flag = a;
-        age = b;
-        money = c;
-    }
-};
+void refIncrement(int* ptr) {
+    (*ptr)++;
+}
+
+void valueIncremet(int &a) {
+    a++;
+}
 
 int main () {
-    myStruct *a1 = new myStruct(true, 15, 2.4);
-    cout << a1->flag << " " << (*a1).age << endl;
-    memset(a1, 0, sizeof(myStruct));
-    cout << a1->flag << " " << a1->age << endl;
-    
+    int a=3;
+    int *ptr_a = &a;
+    cout << "Pointer to a " << a << endl;
+    cout << "a's address " << ptr_a << endl;
+    refIncrement(ptr_a);
+    cout << "The value of a is: " << a << endl;
+    valueIncremet(a);
+    cout << "The value of a is: " << a << endl;
+    int arr[10];
+    int *ptr1 = arr;  //pointing to arr[0]
+    ptr1++;   //pointing to arr[1]
     return 0;
 }
